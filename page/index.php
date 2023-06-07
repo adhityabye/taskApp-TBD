@@ -5,12 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <title>Bukuku Store</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/cJxPxP0/download.png">
+    
 </head>
 <body style= "height: 100%; width: 100%; box-sizing: border-box;">
     
@@ -20,8 +18,7 @@
         </h1>
 
         <!-- Ini section buat navigation bar -->
-        <ul class = "nav justify-content-center">
-
+        <ul class = "nav nav-pills nav-fill">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="./">Cabang Toko</a>
             </li>
@@ -29,12 +26,14 @@
                 <a class="nav-link" href="./book.php">Daftar Buku</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="./publisher.php">Publisher</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="./author.php">Daftar Penulis</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./employee.php">Daftar Pegawai</a>
             </li>
-
         </ul>
 
         <div class="container-fluid" style="height: 100%">

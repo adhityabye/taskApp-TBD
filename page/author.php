@@ -20,21 +20,22 @@
         <img src="https://i.ibb.co/cJxPxP0/download.png" alt="bukuku store" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
         </h1>
 
-        <ul class = "nav justify-content-center">
-
+        <ul class = "nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Cabang Toko</a>
+                <a class="nav-link" href="./">Cabang Toko</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./book.php">Daftar Buku</a>
+                <a class="nav-link"  href="./book.php">Daftar Buku</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./author.php">Daftar Penulis</a>
+                <a class="nav-link" href="./publisher.php">Publisher</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="./author.php">Daftar Penulis</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./employee.php">Daftar Pegawai</a>
             </li>
-
         </ul>
 
         <div class="container-fluid" style="height: 100%;">
