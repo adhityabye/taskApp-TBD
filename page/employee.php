@@ -16,7 +16,7 @@
 <body style="height: 100%; width: 100%; box-sizing: border-box;">
     <div class="container">
          <h1 class="mt-4 mb-" style="text-align: center;">
-            <img src="https://i.ibb.co/cJxPxP0/download.png" alt="croppedbook" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
+            <img src="https://i.ibb.co/cJxPxP0/download.png" alt="bukuku store" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
         </h1>
 
         <ul class = "nav justify-content-center">
@@ -44,7 +44,7 @@
                     <table class="table table-hover mt-4">
                         <thead>
                             <th>No.</th>
-                            <th>Nama</th>
+                            <th>Nama Pegawai</th>
                             <th>Email</th>
                             <th>Status</th>
                         </thead>
@@ -75,18 +75,24 @@
                             // var_dump($selectedBook);
                             $selectedAddress = postgreQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedEmployee['employee_id'])[0];
                             // var_dump($selectedAddress);
+                            $selectedBranch = postgreQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$selectedEmployee['branch_id'])[0];
                     ?>
 
                     <table class="table mt-3">
                     <tbody>
                         <tr>
-                            <th>Nama</th>
+                            <th>Nama Pegawai</th>
                             <td><?php echo str_replace(['}', '"', '{'], '', $selectedEmployee["nama"]) ?></td>
                         </tr>
                         <!-- menampilkan status employee menggunakan row dalam tabel -->
                         <tr>
                             <th>Status</th>
                             <td><?php echo str_replace(['}', '"', '{'], '', $selectedEmployee["status"]) ?></td>
+                        </tr>
+                        <!-- Informasi mengenai cabang tempat pegawai bekerja -->
+                        <tr>
+                            <th>Cabang bekerja </th>
+                            <td><?php echo str_replace(['}', '"', '{'], '', $selectedBranch["nama"]) ?></td>
                         </tr>
                         <!-- menampilkan email employee menggunakan row dalam tabel -->
                         <tr>

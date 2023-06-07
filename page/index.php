@@ -16,7 +16,7 @@
     
     <div class = "container">
         <h1 class="mt-4 mb-" style="text-align: center;">
-            <img src="https://i.ibb.co/cJxPxP0/download.png" alt="croppedbook" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
+            <img src="https://i.ibb.co/cJxPxP0/download.png" alt="bukuku store" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
         </h1>
 
         <!-- Ini section buat navigation bar -->

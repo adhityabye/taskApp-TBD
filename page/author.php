@@ -16,7 +16,8 @@
 <body style="height: 100%; width: 100%; box-sizing: border-box;">
     
     <div class="container">
-        <h1 class="mt-4 mb-" style="text-align: center;">Bukuku Store
+        <h1 class="mt-4 mb-" style="text-align: center;">
+        <img src="https://i.ibb.co/cJxPxP0/download.png" alt="bukuku store" style="height:70px; width:70px; display: block; margin: 0 auto;"/>Bukuku Store
         </h1>
 
         <ul class = "nav justify-content-center">
