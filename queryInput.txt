@@ -1,0 +1,241 @@
+CREATE TABLE Address(
+	address_id integer PRIMARY KEY NOT NULL,
+	city character varying(50)[],
+	street character varying(50)[],
+	ZIP character varying(50)[], 
+	last_update timestamp with time zone NOT NULL
+)
+
+INSERT INTO Address (address_id, city, street, ZIP, last_update)
+VALUES
+
+→ alamat staff
+  (1, ARRAY['Jakarta'], ARRAY['Jalan Sudirman'], ARRAY[‘10110’], NOW()),
+  (2, ARRAY['Surabaya'], ARRAY['Jalan Raya Darmo'], ARRAY[‘60241’], NOW()),
+  (3, ARRAY['Bandung'], ARRAY['Jalan Asia Afrika'], ARRAY[‘40112’], NOW()),
+  (4, ARRAY['Medan'], ARRAY['Jalan Imam Bonjol'], ARRAY[‘20112’], NOW()),
+  (5, ARRAY['Semarang'], ARRAY['Jalan Pemuda'], ARRAY[‘50132’], NOW()),
+  (6, ARRAY['Makassar'], ARRAY['Jalan A. P. Pettarani'], ARRAY[‘90222’], NOW()),
+  (7, ARRAY['Palembang'], ARRAY['Jalan Mayor Ruslan'], ARRAY[‘30126’], NOW()),
+  (8, ARRAY['Tangerang'], ARRAY['Jalan Gatot Subroto'], ARRAY[‘15124’], NOW()),
+  (9, ARRAY['Depok'], ARRAY['Jalan Margonda Raya'], ARRAY[‘16424’], NOW()),
+  (10, ARRAY['Batam'], ARRAY['Jalan Raja H. Fisabilillah'], ARRAY[‘29444’], NOW()),
+
+→ alamat publisher
+  (11, ARRAY['Bekasi'], ARRAY['Jalan Ahmad Yani'], ARRAY[‘17144’], NOW()),
+  (12, ARRAY['Surakarta'], ARRAY['Jalan Slamet Riyadi'], ARRAY[‘57132’], NOW()),
+  (13, ARRAY['Padang'], ARRAY['Jalan Pemuda'], ARRAY[‘25118’], NOW()),
+  (14, ARRAY['Denpasar'], ARRAY['Jalan Hayam Wuruk'], ARRAY[‘80117’], NOW()),
+  (15, ARRAY['Pekanbaru'], ARRAY['Jalan Jendral Sudirman'], ARRAY[‘28155’], NOW()),
+  (16, ARRAY['Bandar Lampung'], ARRAY['Jalan Raden Intan'], ARRAY[‘35214’], NOW()),
+  (17, ARRAY['Tangerang Selatan'], ARRAY['Jalan Boulevard BSD'], ARRAY[‘15345’], NOW()),
+  (18, ARRAY['Banjarmasin'], ARRAY['Jalan A. Yani'], ARRAY[‘70248’], NOW()),
+  (19, ARRAY['Yogyakarta'], ARRAY['Jalan Malioboro'], ARRAY[‘55213’], NOW()),
+  (20, ARRAY['Manado'], ARRAY['Jalan Sam Ratulangi'], ARRAY[‘95114’], NOW()),
+
+→ alamat penulis
+  (21, ARRAY['Bogor'], ARRAY['Jalan Pajajaran'], ARRAY[‘16143’], NOW()),
+  (22, ARRAY['Serang'], ARRAY['Jalan Raya Anyer'], ARRAY[‘42161’], NOW()),
+  (23, ARRAY['Pontianak'], ARRAY['Jalan Imam Bonjol'], ARRAY[‘78113’], NOW()),
+  (24, ARRAY['Cimahi'], ARRAY['Jalan Raya Baros'], ARRAY[‘40533’], NOW()),
+  (25, ARRAY['Balikpapan'], ARRAY['Jalan Sudirman'], ARRAY[‘76113’], NOW()),
+  (26, ARRAY['Jambi'], ARRAY['Jalan Cut Nyak Dien'], ARRAY[‘36124’], NOW()),
+  (27, ARRAY['Denpasar'], ARRAY['Jalan Teuku Umar'], ARRAY[‘80232’], NOW()),
+  (28, ARRAY['Ambon'], ARRAY['Jalan Diponegoro'], ARRAY[‘97128’], NOW()),
+  (29, ARRAY['Cirebon'], ARRAY['Jalan Siliwangi'], ARRAY[‘45132’], NOW()),
+  (30, ARRAY['Madiun'], ARRAY['Jalan Pahlawan'], ARRAY[‘63132’], NOW()),
+
+→ Buat alamat branch office
+  (31, ARRAY['Purwokerto'], ARRAY['Jalan Jenderal Sudirman'], ARRAY[‘53142’], NOW()),
+  (32, ARRAY['Tegal'], ARRAY['Jalan Diponegoro'], ARRAY[‘52115’], NOW()),
+  (33, ARRAY[‘Magelang], ARRAY['Jalan T. Panglima Nyak Makam'], ARRAY[‘24355’], NOW()),
+  (34, ARRAY['Bengkulu'], ARRAY['Jalan Sam Ratulangi'], ARRAY[‘94111’], NOW());
+
+
+
+CREATE TABLE Category(
+	category_id integer PRIMARY KEY NOT NULL,
+	category_name character varying(50)[],
+	last_update timestamp with time zone NOT NULL
+)
+
+INSERT INTO Category (category_id, category_name, last_update)
+VALUES
+  (1, ARRAY['Fiction'], NOW()),
+  (2, ARRAY['Non-Fiction'], NOW()),
+  (3, ARRAY['Mystery'], NOW()),
+  (4, ARRAY['Romance'], NOW()),
+  (5, ARRAY['Science Fiction'], NOW()),
+  (6, ARRAY['Fantasy'], NOW()),
+  (7, ARRAY['Biography'], NOW()),
+  (8, ARRAY['Self-Help'], NOW()),
+  (9, ARRAY['History'], NOW()),
+  (10, ARRAY['Children'], NOW());
+
+CREATE TABLE Publisher(
+	publisher_id integer PRIMARY KEY NOT NULL,
+	nama character varying(50)[],
+	email character varying(50)[],
+	fax character varying(50)[],
+	last_update timestamp with time zone,
+	address_id integer,
+	FOREIGN key (address_id) REFERENCES address(address_id) 
+)
+
+
+INSERT INTO Publisher (publisher_id, nama, email, fax, last_update, address_id)
+VALUES
+  (1, ARRAY['Penerbit Serasi'], ARRAY['info@penerbitserasi.com'], ARRAY['123456789'], NOW(), 11),
+  (2, ARRAY['Penerbit Utama'], ARRAY['info@penerbitutama.com'], ARRAY['987654321'], NOW(), 12),
+  (3, ARRAY['Penerbit Jaya'], ARRAY['info@penerbitjaya.com'], ARRAY['456789123'], NOW(), 13),
+  (4, ARRAY['Penerbit Cahaya'], ARRAY['info@penerbitcahaya.com'], ARRAY['321654987'], NOW(), 14),
+  (5, ARRAY['Penerbit Makmur'], ARRAY['info@penerbitmakmur.com'], ARRAY['789123456'], NOW(), 15),
+  (6, ARRAY['Penerbit Bersama'], ARRAY['info@penerbitbersama.com'], ARRAY['654987321'], NOW(), 16),
+  (7, ARRAY['Penerbit Maju'], ARRAY['info@penerbitmaju.com'], ARRAY['234567891'], NOW(), 17),
+  (8, ARRAY['Penerbit Sejahtera'], ARRAY['info@penerbitsejahtera.com'], ARRAY['918273645'], NOW(), 18),
+  (9, ARRAY['Penerbit Gemilang'], ARRAY['info@penerbitgemilang.com'], ARRAY['543219876'], NOW(), 19),
+  (10, ARRAY['Penerbit Terang'], ARRAY['info@penerbitterang.com'], ARRAY['876543219'], NOW(), 20);
+
+
+CREATE Table author(
+	author_id integer PRIMARY KEY,
+	nama character varying(50)[],
+	birth_date character varying(50)[],
+	phone_number character varying(50)[],
+	last_update timestamp with time zone,
+	address_id integer,
+	publisher_id integer,
+	FOREIGN KEY(address_id) REFERENCES address(address_id),
+	FOREIGN KEY(publisher_id) REFERENCES publisher(publisher_id)
+)
+
+INSERT INTO Author (author_id, nama, birth_date, phone_number, last_update, address_id, publisher_id)
+VALUES
+  (1, ARRAY['Ahmad Sulistio'], ARRAY['1990-05-15'], ARRAY['081234567891'], NOW(), 21, 1),
+  (2, ARRAY['Rika Wijaya'], ARRAY['1985-10-20'], ARRAY['089876543210'], NOW(), 22, 2),
+  (3, ARRAY['Budi Santoso'], ARRAY['1978-03-12'], ARRAY['082345678912'], NOW(), 23, 3),
+  (4, ARRAY['Linda Kusuma'], ARRAY['1992-07-28'], ARRAY['087654321098'], NOW(), 24, 4),
+  (5, ARRAY['Surya Mulyadi'], ARRAY['1983-09-05'], ARRAY['081234567890'], NOW(), 25, 5),
+  (6, ARRAY['Dewi Susanto'], ARRAY['1987-12-03'], ARRAY['089876543210'], NOW(), 26, 6),
+  (7, ARRAY['Rudi Prabowo'], ARRAY['1991-02-18'], ARRAY['082345678912'], NOW(), 27, 7),
+  (8, ARRAY['Siska Putri'], ARRAY['1980-11-08'], ARRAY['087654321098'], NOW(), 28, 8),
+  (9, ARRAY['Andi 'Kurniawan'], ARRAY['1984-06-25'], ARRAY['081234567890'], NOW(), 29, 9),
+  (10, ARRAY['Maya Wijaya'], ARRAY['1993-04-14'], ARRAY['089876543210'], NOW(), 30, 10);
+
+
+CREATE TABLE branch_office(
+	branch_id integer PRIMARY KEY,
+	nama character varying(50)[],
+	land_area character varying(50)[],
+	last_update timestamp with time zone,
+	address_id integer,
+	FOREIGN KEY (address_id) REFERENCES address(address_id)
+)
+
+
+INSERT INTO branch_office (branch_id, nama, land_area, last_update, address_id)
+VALUES
+    (1, ARRAY['Cabang A'], ARRAY['1000.5'],NOW(), 31),
+    (2, ARRAY['Cabang B'], ARRAY['750.25'], NOW(), 32),
+    (3, ARRAY['Cabang C'], ARRAY['500.75'], NOW(), 33),
+    (4, ARRAY['Cabang D'], ARRAY['1200.00'], NOW(), 34);
+
+CREATE Table book(
+	book_id integer PRIMARY KEY,
+	title character varying(50)[],
+	price character varying(50)[],
+	pages character varying(50)[],
+	last_update timestamp with time zone,
+	author_id integer,
+	category_id integer,
+	branch_id integer, 
+	FOREIGN KEY(author_id) REFERENCES author(author_id),
+	FOREIGN KEY(category_id) REFERENCES category(category_id),
+	FOREIGN KEY(branch_id) REFERENCES branch_office(branch_id)
+)
+
+
+
+INSERT INTO Book (book_id, title, price, pages, last_update, author_id, category_id, branch_id)
+VALUES
+  (1, ARRAY['Bumi Cinta'], ARRAY['150000'], ARRAY['400'], NOW(), 1, 1, 2),
+  (2, ARRAY['Laskar Pelangi'], ARRAY['90000'], ARRAY['320'], NOW(), 8, 10, 3),
+  (3, ARRAY['Pulang'], ARRAY['125000'], ARRAY['280'], NOW(), 3, 2, 1),
+  (4, ARRAY['Ayat-ayat Cinta'], ARRAY['105000'], ARRAY['360'], NOW(), 4, 4, 4),
+  (5, ARRAY['Dilan: Dia adalah Dilanku tahun 1990'], ARRAY['95000'], ARRAY['320'], NOW(), 5, 4, 3),
+  (6, ARRAY['Ronggeng Dukuh Paruk'], ARRAY['80000'], ARRAY['450'], NOW(), 6, 1, 2),
+  (7, ARRAY['Perahu Kertas'], ARRAY['85000'], ARRAY['380'], NOW(), 3, 2, 3),
+  (8, ARRAY['Negeri 5 Menara'], ARRAY['88000'], ARRAY['400'], NOW(), 8, 3, 4),
+  (9, ARRAY['Sang Pemimpi'], ARRAY['95000'], ARRAY['340'], NOW(), 9, 10, 1),
+  (10, ARRAY['Cinta'], ARRAY['75000'], ARRAY['310'], NOW(), 10, 4, 3),
+  (11, ARRAY['Garis Waktu'], ARRAY['105000'], ARRAY['420'], NOW(), 1, 5, 1),
+  (12, ARRAY['Pulang (Edisi Film)'], ARRAY['175000'], ARRAY['480'], NOW(), 2, 2, 4),
+  (13, ARRAY['Laskar Pelangi (Edisi Film)'], ARRAY['125000'], ARRAY['360'], NOW(), 3, 10, 2),
+  (14, ARRAY['Ayat-ayat Cinta 2'], ARRAY['115000'], ARRAY['400'], NOW(), 4, 4, 4),
+  (15, ARRAY['Dilan: Dia adalah Dilanku tahun 1991'], ARRAY['105000'], ARRAY['350'], NOW(), 5, 4, 1),
+  (16, ARRAY['Maryamah Karpov'], ARRAY['110000'], ARRAY['256'], NOW(), 6, 3, 1),
+  (17, ARRAY['Edensor'], ARRAY['134000'], ARRAY['256'], NOW(), 2, 1, 4),
+  (18, ARRAY['Ibu'], ARRAY['80000'], ARRAY['156'], NOW(), 3, 7, 2),
+  (19, ARRAY['Ranah 3 Warna'], ARRAY['134000'], ARRAY['366'], NOW(), 1, 2, 1),
+  (20, ARRAY['Rantau 1 Muara'], ARRAY['125000'], ARRAY['506'], NOW(), 2, 3, 2),
+  (21, ARRAY['Ayah'], ARRAY['112000'], ARRAY['356'], NOW(), 3, 4, 3),
+  (22, ARRAY['Negeri Para Bedebah'], ARRAY['95000'], ARRAY['441'], NOW(), 4, 5, 4),
+  (23, ARRAY['Bumi'], ARRAY['119000'], ARRAY['350'], NOW(), 5, 6, 4),
+  (24, ARRAY['Hujan'], ARRAY['89000'], ARRAY['505'], NOW(), 6, 7, 2),
+  (25, ARRAY['Pulang'], ARRAY['120000'], ARRAY['398'], NOW(), 7, 8, 1),
+  (26, ARRAY['Selena'], ARRAY['99000'], ARRAY['256'], NOW(), 8, 9, 2),
+  (27, ARRAY['Bintang'], ARRAY['99000'], ARRAY['521'], NOW(), 10, 1, 3),
+  (28, ARRAY['Matahari Minor'], ARRAY['110000'], ARRAY['392'], NOW(), 2, 3, 4),
+  (29, ARRAY['Bulan'], ARRAY['98000'], ARRAY['384'], NOW(), 9, 7, 2),
+  (30, ARRAY['Komet Minor'], ARRAY['87000'], ARRAY['482'], NOW(), 2, 10, 1),
+  (31, ARRAY['Si Anak Badai'], ARRAY['121000'], ARRAY['556'], NOW(), 10, 9, 1),
+  (32, ARRAY['Si Anak Spesial'], ARRAY['119000'], ARRAY['476'], NOW(), 7, 3, 3),
+  (33, ARRAY['Si Anak Cahaya'], ARRAY['110000'], ARRAY['394'], NOW(), 4, 10, 2);
+
+
+
+CREATE Table employee(
+	employee_id integer PRIMARY KEY,
+	nama character varying(50)[],
+	status character varying(30)[],
+	email character varying(50)[],
+	last_update timestamp with time zone,
+	address_id integer,
+	branch_id integer,
+	FOREIGN KEY(address_id) REFERENCES address(address_id),
+	FOREIGN KEY(branch_id) REFERENCES branch_office(branch_id)
+)
+
+
+
+INSERT INTO Employee (employee_id, first_name, last_name, status, email, last_update, address_id, branch_id)
+VALUES
+  (1, ARRAY['Budi'], ARRAY['Kusuma'], ARRAY['Active'], ARRAY['budi.santoso@example.com'], NOW(), 1, 1),
+  (2, ARRAY['Siti'], ARRAY['Rahayu'], ARRAY['Active'], ARRAY['siti.wahyuni@example.com'], NOW(), 2, 2),
+  (3, ARRAY['Joko'], ARRAY['Susanto'], ARRAY['Active'], ARRAY['joko.susanto@example.com'], NOW(), 3, 2),
+  (4, ARRAY['Rina'], ARRAY['Kusuma'], ARRAY['Active'], ARRAY['rina.kusuma@example.com'], NOW(), 4, 3),
+  (5, ARRAY['Agus'], ARRAY['Hidayat'], ARRAY['Active'], ARRAY['agus.hidayat@example.com'], NOW(), 5, 4),
+  (6, ARRAY['Dewi'], ARRAY['Pratiwi'], ARRAY['Active'], ARRAY['dewi.pratiwi@example.com'], NOW(), 6, 4),
+  (7, ARRAY['Rudi'], ARRAY['Setiawan'], ARRAY['Active'], ARRAY['rudi.setiawan@example.com'], NOW(), 7, 3),
+  (8, ARRAY['Siska'], ARRAY['Nugroho'], ARRAY['Active'], ARRAY['siska.nugroho@example.com'], NOW(), 8, 2),
+  (9, ARRAY['Andi'], ARRAY['Kurniawan'], ARRAY['Active'], ARRAY['andi.kurniawan@example.com'], NOW(), 9, 1),
+  (10, ARRAY['Maya'], ARRAY['Wijaya'], ARRAY['Active'], ARRAY['maya.wijaya@example.com'], NOW(), 10, 1),
+  (11, ARRAY['Agung'], ARRAY['Saputra'], ARRAY['Active'], ARRAY['agung.saputra@example.com'], NOW(), 2, 2),
+  (12, ARRAY['Lina'], ARRAY['Anggraini'], ARRAY['Active'], ARRAY['lina.anggraini@example.com'], NOW(), 4, 3),
+  (13, ARRAY['Adi'], ARRAY['Purnomo'], ARRAY['Active'], ARRAY['adi.purnomo@example.com'], NOW(), 7, 4),
+  (14, ARRAY['Nina'], ARRAY['Sari'], ARRAY['Active'], ARRAY['nina.sari@example.com'], NOW(), 9, 4),
+  (15, ARRAY['Eko'], ARRAY['Hartono'], ARRAY['Active'], ARRAY['eko.hartono@example.com'], NOW(), 1, 3),
+  (16, ARRAY['Ratna'], ARRAY['Saputri'], ARRAY['Active'], ARRAY['ratna.saputri@example.com'], NOW(), 2, 2),
+  (17, ARRAY['Anto'], ARRAY['Widodo'], ARRAY['Active'], ARRAY['anto.widodo@example.com'], NOW(), 8, 1),
+  (18, ARRAY['Dian'], ARRAY['Santoso'], ARRAY['Active'], ARRAY['dian.santoso@example.com'], NOW(), 5, 2),
+  (19, ARRAY['Bambang'], ARRAY['Wahyudi'], ARRAY['Active'], ARRAY['bambang.wahyudi@example.com'], NOW(), 5, 3),
+  (20, ARRAY['Sari'], ARRAY['Kusumawati'], ARRAY['Active'], ARRAY['sari.kusumawati@example.com'], NOW(), 3, 2),
+  (21, ARRAY['Faisal'], ARRAY['Abdullah'], ARRAY['Active'], ARRAY['faisal.abdullah@example.com'], NOW(), 10, 4),
+  (22, ARRAY['Rina'], ARRAY['Yulianti'], ARRAY['Active'], ARRAY['rina.yulianti@example.com'], NOW(), 2, 2),
+  (23, ARRAY['Dedi'], ARRAY['Pranata'], ARRAY['Active'], ARRAY['dedi.pranata@example.com'], NOW(), 1, 1),
+  (24, ARRAY['Wati'], ARRAY['Lestari'], ARRAY['Active'], ARRAY['wati.lestari@example.com'], NOW(), 3, 4),
+  (25, ARRAY['Arief'], ARRAY['Wibowo'], ARRAY['Active'], ARRAY['arief.wibowo@example.com'], NOW(), 6, 2);
+
+
+
+
