@@ -41,7 +41,7 @@
         <div class ="container-fluid" style="height: 100%;">
             <div class= "row">
 
-                <div class="col" style="height:70vh; overflow:scroll">
+                <div class="col" style="height:60vh; overflow:scroll">
                     <table class="table table-hover mt-4">
                         <thead>
                             <th>No.</th>
@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                $storeEmployee = postgreQuery('SELECT * FROM public."employee"');
+                                $storeEmployee = executePostgreSQLQuery('SELECT * FROM public."employee"');
                                 foreach ($storeEmployee as $index => $row):
                             ?>
                             <tr>
@@ -72,11 +72,11 @@
                     <?php
                         [ $selectedEmployee, $selectedAddress, $selectedBranch ] = [ null, null, null];
                         if (isset($_GET['selected_id'])):
-                            $selectedEmployee = postgreQuery('SELECT * FROM public."employee" WHERE employee_id = '.$_GET['selected_id'])[0];
+                            $selectedEmployee = executePostgreSQLQuery('SELECT * FROM public."employee" WHERE employee_id = '.$_GET['selected_id'])[0];
                             // var_dump($selectedBook);
-                            $selectedAddress = postgreQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedEmployee['employee_id'])[0];
+                            $selectedAddress = executePostgreSQLQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedEmployee['employee_id'])[0];
                             // var_dump($selectedAddress);
-                            $selectedBranch = postgreQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$selectedEmployee['branch_id'])[0];
+                            $selectedBranch = executePostgreSQLQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$selectedEmployee['branch_id'])[0];
                     ?>
 
                     <table class="table mt-3">

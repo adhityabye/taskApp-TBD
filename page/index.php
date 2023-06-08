@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/cJxPxP0/download.png">
     
 </head>
-<body style= "height: 100%; width: 100%; box-sizing: border-box;">
+<body style= "height: 100%; box-sizing: border-box;">
     
     <div class = "container">
         <h1 class="mt-4 mb-" style="text-align: center;">
@@ -47,7 +47,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                $storeBranches = postgreQuery('SELECT * FROM public."branch_office"');
+                                $storeBranches = executePostgreSQLQuery('SELECT * FROM public."branch_office"');
                                 foreach ($storeBranches as $index => $row):
                             ?>
                             <tr>
@@ -68,11 +68,11 @@
                         //ketiga variabel ini diinisiasi null dan nantinya akan digunkana untuk menyimpan data dari selected table yang diinginkan.
                         [ $selectedBranch, $selectedAddress, $selectedBooks ] = [ null, null, null ];
                         if (isset($_GET['selected_id'])):
-                            $selectedBranch = postgreQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$_GET['selected_id'])[0];
+                            $selectedBranch = executePostgreSQLQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$_GET['selected_id'])[0];
                             // var_dump($selectedBranch);
-                            $selectedAddress = postgreQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedBranch['address_id'])[0];
+                            $selectedAddress = executePostgreSQLQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedBranch['address_id'])[0];
                             // var_dump($selectedAddress);
-                            $selectedBooks = postgreQuery('SELECT * FROM public."book" WHERE branch_id = '.$_GET['selected_id']);
+                            $selectedBooks = executePostgreSQLQuery('SELECT * FROM public."book" WHERE branch_id = '.$_GET['selected_id']);
                             // var_dump($selectedBooks);
                     ?>
 

@@ -40,7 +40,7 @@
 
         <div class="container-fluid" style="height:100%;">
             <div class="row">
-                <div class="col" style="height:70vh; overflow:scroll" >
+                <div class="col" style="height:60vh; overflow:scroll" >
                     <table class="table table-hover mt-4">
                         <thead>
                             <th>No.</th>
@@ -48,7 +48,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                $storeBook = postgreQuery('SELECT * FROM public."book"');
+                                $storeBook = executePostgreSQLQuery('SELECT * FROM public."book"');
                                 foreach ($storeBook as $index => $row):
                                     $trimmedTitle = substr(trim($row['title'], '",{}'), 0, 30);
                             ?>
@@ -69,13 +69,13 @@
                     <?php
                         [ $selectedBook, $selectedAuthor, $selectedCategory, $selectedBranch ] = [ null, null, null, null ];
                         if (isset($_GET['selected_id'])):
-                            $selectedBook = postgreQuery('SELECT * FROM public."book" WHERE book_id = '.$_GET['selected_id'])[0];
+                            $selectedBook = executePostgreSQLQuery('SELECT * FROM public."book" WHERE book_id = '.$_GET['selected_id'])[0];
                             // var_dump($selectedBook);
-                            $selectedAuthor = postgreQuery('SELECT * FROM public."author" WHERE author_id = '.$selectedBook['author_id'])[0];
+                            $selectedAuthor = executePostgreSQLQuery('SELECT * FROM public."author" WHERE author_id = '.$selectedBook['author_id'])[0];
                             // var_dump($selectedAddress);
-                            $selectedCategory = postgreQuery('SELECT * FROM public."category" WHERE category_id = '.$selectedBook['category_id'])[0];
+                            $selectedCategory = executePostgreSQLQuery('SELECT * FROM public."category" WHERE category_id = '.$selectedBook['category_id'])[0];
                             // var_dump($selectedBooks);
-                            $selectedBranch = postgreQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$selectedBook['book_id'])[0];
+                            $selectedBranch = executePostgreSQLQuery('SELECT * FROM public."branch_office" WHERE branch_id = '.$selectedBook['book_id'])[0];
                     ?>
 
                     <table class="table mt-3">

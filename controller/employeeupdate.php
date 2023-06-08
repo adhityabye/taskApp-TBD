@@ -27,7 +27,7 @@
             $e['nama'] = substr($e['nama'], 2, -2);
             $e['status'] = substr($e['status'], 1, -1);
             return $e;
-        } , postgreQuery('SELECT * FROM public."employee"'));
+        } , executePostgreSQLQuery('SELECT * FROM public."employee"'));
     ?>
     <form action="./query.php" method="post" id="editauth" onsubmit="return confirm('Apakah anda yakin kak?');">
 

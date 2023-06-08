@@ -15,14 +15,21 @@ try {
     exit();
 }
 
-function postgreQuery($queryString, $hasReturnValue=true) {
+function executePostgreSQLQuery(string $query, bool $returnResult = true)
+{
     global $pdo;
+
     try {
-        $stmt = $pdo->prepare($queryString);
-        $stmt->execute();
-        return $hasReturnValue ? $stmt->fetchAll(PDO::FETCH_ASSOC) : true;
-    } catch (PDOException $e) {
-        return $e->getMessage();
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+
+        if ($returnResult) {
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return true;
+        }
+    } catch (PDOException $exception) {
+        return $exception->getMessage();
     }
 }
 

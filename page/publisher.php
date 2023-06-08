@@ -35,7 +35,7 @@
 
         <div class="container-fluid" style="height: 100%">
             <div class="row">
-                <div class="col">
+                <div class="col" style="height:60vh; overflow:scroll">
                     <table class="table table-hover mt-4">
                         <thead>
                             <th>No.</th>
@@ -43,7 +43,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                $bookPublisher = postgreQuery('SELECT * FROM public."publisher"');
+                                $bookPublisher = executePostgreSQLQuery('SELECT * FROM public."publisher"');
                                 foreach ($bookPublisher as $index => $row):
                             ?>
                             <tr>
@@ -63,9 +63,9 @@
                         //ketiga variabel ini diinisiasi null dan nantinya akan digunkana untuk menyimpan data dari selected table yang diinginkan.
                         [ $selectedPublisher, $selectedAddress ] = [ null, null];
                         if (isset($_GET['selected_id'])):
-                            $selectedPublisher = postgreQuery('SELECT * FROM public."publisher" WHERE publisher_id = '.$_GET['selected_id'])[0];
+                            $selectedPublisher = executePostgreSQLQuery('SELECT * FROM public."publisher" WHERE publisher_id = '.$_GET['selected_id'])[0];
                             // var_dump($selectedBranch);
-                            $selectedAddress = postgreQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedPublisher['publisher_id'])[0];
+                            $selectedAddress = executePostgreSQLQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedPublisher['publisher_id'])[0];
                             // var_dump($selectedAddress);
                     ?>
 

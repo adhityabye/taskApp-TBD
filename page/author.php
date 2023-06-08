@@ -41,7 +41,7 @@
         <div class="container-fluid" style="height: 100%;">
             <div class="row">
 
-                <div class="col" style="height:70vh; overflow:scroll">
+                <div class="col" style="height:60vh; overflow:scroll">
                     <table class="table table-hover mt-4">
                         <thead>
                             <th>No.</th>
@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                $authors = postgreQuery('SELECT * FROM public."author"');
+                                $authors = executePostgreSQLQuery('SELECT * FROM public."author"');
                                 foreach ($authors as $index => $row):
                             ?>
                             <tr>
@@ -71,9 +71,9 @@
                 //alamat diakses dengan menyamakan id penulis dengan id alamat dalam database.
                     [ $selectedAuthor, $selectedAddress ] = [ null, null];
                     if (isset($_GET['selected_id'])):
-                        $selectedAuthor = postgreQuery('SELECT * FROM public."author" WHERE author_id = '.$_GET['selected_id'])[0];
+                        $selectedAuthor = executePostgreSQLQuery('SELECT * FROM public."author" WHERE author_id = '.$_GET['selected_id'])[0];
                         // var_dump($selectedBook);
-                        $selectedAddress = postgreQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedAuthor['author_id'])[0];
+                        $selectedAddress = executePostgreSQLQuery('SELECT * FROM public."address" WHERE address_id = '.$selectedAuthor['author_id'])[0];
                         // var_dump($selectedAddress);
                 ?>
 
