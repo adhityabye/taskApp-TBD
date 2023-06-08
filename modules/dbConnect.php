@@ -33,19 +33,20 @@ function executePostgreSQLQuery(string $query, bool $returnResult = true)
     }
 }
 
-function postgreQueryTCL($multipleQueryString) {
+function postgreQueryTCL(string $multipleQueries)
+{
     global $pdo;
-    try { 
-        $pdo->beginTransaction();     
-        $pdo->exec($multipleQueryString);   
-        $pdo->commit();                     
-        
+
+    try {
+        $pdo->beginTransaction();
+        $pdo->exec($multipleQueries);
+        $pdo->commit();
+
         return true;
-    } catch (PDOException $e) {
-        $pdo->rollBack(); 
-        echo "Error: " . $e->getMessage();
+    } catch (PDOException $exception) {
+        $pdo->rollBack();
+        echo "Error: " . $exception->getMessage();
         return false;
     }
 }
-
 ?>
